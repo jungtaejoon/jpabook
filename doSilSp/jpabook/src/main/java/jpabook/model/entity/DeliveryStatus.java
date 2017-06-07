@@ -1,4 +1,4 @@
-package jpabook.start;
+package jpabook.model.entity;
 
 public enum DeliveryStatus {
 	READY, COMP

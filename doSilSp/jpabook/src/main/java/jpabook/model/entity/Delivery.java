@@ -1,4 +1,4 @@
-package jpabook.start;
+package jpabook.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Delivery {
+public class Delivery extends BaseEntity {
 
 	@Id
 	@GeneratedValue

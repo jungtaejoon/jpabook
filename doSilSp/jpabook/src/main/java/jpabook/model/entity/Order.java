@@ -1,4 +1,4 @@
-package jpabook.start;
+package jpabook.model.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "oreders")
-public class Order {
+public class Order extends BaseEntity {
 
 	@Id
 	@GeneratedValue

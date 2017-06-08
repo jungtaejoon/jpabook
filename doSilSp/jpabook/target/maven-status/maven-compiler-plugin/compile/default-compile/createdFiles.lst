@@ -1,0 +1,11 @@
+jpabook\model\entity\QOrder.class
+jpabook\model\entity\item\QItem.class
+jpabook\model\entity\QOrderItem.class
+jpabook\model\entity\QAddress.class
+jpabook\model\entity\QBaseEntity.class
+jpabook\model\entity\QCategory.class
+jpabook\model\entity\item\QBook.class
+jpabook\model\entity\item\QMovie.class
+jpabook\model\entity\QMember.class
+jpabook\model\entity\QDelivery.class
+jpabook\model\entity\item\QAlbum.class

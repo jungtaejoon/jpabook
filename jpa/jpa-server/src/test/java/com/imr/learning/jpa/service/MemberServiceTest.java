@@ -55,10 +55,10 @@ public class MemberServiceTest {
 		
 		//given
 		Member member = new Member();
-		member.setName("kim");
-		service.join(member);
 		Member member2 = new Member();
+		member.setName("kim");
 		member2.setName("kim");
+		service.join(member);
 		
 		//when
 		service.join(member2);

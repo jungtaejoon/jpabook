@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -20,7 +21,7 @@ import jpabook.model.entity.Category;
 public abstract class Item extends BaseEntity {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long itemId;
 	private String name;
 	private Integer price;

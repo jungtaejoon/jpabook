@@ -42,6 +42,7 @@ public class SiljunMain {
 		for(Member member : members) {
 			System.out.println(member.getName());
 		}
+		
 	}
 
 }

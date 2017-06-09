@@ -31,6 +31,14 @@ public class Item {
 	@ManyToMany(mappedBy = "items")
 	private List<Category> categories = new ArrayList<Category>();
 
+	public Item() {
+		super();
+	}
+
+	public Item(String name) {
+		this.name = name;
+	}
+
 	public Long getId() {
 		return id;
 	}

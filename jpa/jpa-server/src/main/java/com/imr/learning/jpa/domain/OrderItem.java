@@ -29,6 +29,14 @@ public class OrderItem {
 	private Integer orderPrice;
 	private Integer count;
 
+	public OrderItem() {
+		super();
+	}
+
+	public OrderItem(Item item) {
+		this.item = item;
+	}
+
 	public Long getId() {
 		return id;
 	}

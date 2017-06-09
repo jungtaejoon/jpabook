@@ -28,9 +28,10 @@ public class OrderService {
 		return repository.findAll();
 	}
 	
-	public void createOrder(Member member, Delivery delivery, List<OrderItem> orderItems) {
+	public Order createOrder(Member member, Delivery delivery, List<OrderItem> orderItems) {
 		Order order = new Order(member, delivery, orderItems);
 		repository.save(order);
+		return order;
 	}
 	
 	public void updateOrderItems(Long id, List<OrderItem> orderItems) {

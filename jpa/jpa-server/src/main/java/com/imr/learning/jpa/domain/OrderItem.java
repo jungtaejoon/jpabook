@@ -37,6 +37,14 @@ public class OrderItem {
 		this.item = item;
 	}
 
+	public OrderItem(Order order, Item item, Integer orderPrice, Integer count) {
+		super();
+		this.order = order;
+		this.item = item;
+		this.orderPrice = orderPrice;
+		this.count = count;
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -19,45 +19,47 @@ import com.imr.learning.jpa.repository.ItemRepository;
 @SpringBootTest
 @Transactional
 public class ItemServiceTest {
+
+	@Autowired
+	ItemService service;
 	
-	@Autowired ItemService service;
-	@Autowired ItemRepository repository;
-	
+	@Autowired
+	ItemRepository repository;
+
 	@Test
 	public void shouldSave() {
-		
-		//given
+
+		// given
 		Item item = new Item();
 		item.setName("상품1");
-				
-		//when
+
+		// when
 		service.saveItem(item);
-		
-		//then
+
+		// then
 		assertEquals(repository.findOne(item.getId()).getName(), "상품1");
 	}
-	
+
 	@Test
 	public void shouldFindByName() {
-		
-		//given
+
+		// given
 		Item item = new Item();
 		item.setName("상품1");
 		service.saveItem(item);
-		
-		//when
+
+		// when
 		List<Item> foundItem = service.findByName("상품1");
-		
-		
-		//then
+
+		// then
 		assertEquals(foundItem.get(0), item);
-		
+
 	}
-	
+
 	@Test
 	public void shouldFindAll() {
-		
-		//given
+
+		// given
 		Item item1 = new Item();
 		Item item2 = new Item();
 		item1.setName("상품1");
@@ -67,13 +69,63 @@ public class ItemServiceTest {
 		List<Item> items = new ArrayList<>();
 		items.add(item1);
 		items.add(item2);
-		
-		
-		//when
+
+		// when
 		List<Item> foundItems = service.findAllItem();
-		
-		//then
+
+		// then
 		assertEquals(foundItems, items);
+	}
+
+	@Test
+	public void shouldInc() {
+
+		// given
+		Item item = new Item();
+		item.setStockQuantity(1);
+		service.saveItem(item);
+		Long savedId = item.getId();
+
+		// when
+		service.incStock(item);
+
+		// then
+		int foundStockQuantity = service.findItem(savedId).getStockQuantity();
+		assertEquals(foundStockQuantity, 2);
+	}
+
+	@Test
+	public void shouldIncAmount() {
+
+		// given
+		Item item = new Item();
+		item.setStockQuantity(1);
+		service.saveItem(item);
+		Long savedId = item.getId();
+
+		// when
+		service.incStock(item, 4);
+
+		// then
+		int foundStockQuantity = service.findItem(savedId).getStockQuantity();
+		assertEquals(foundStockQuantity, 4);
+	}
+
+	@Test
+	public void shouldAmountInc() {
+
+		// given
+		Item item = new Item();
+		item.setStockQuantity(1);
+		service.saveItem(item);
+		Long savedId = item.getId();
+
+		// when
+		service.incStock(4, item);
+
+		// then
+		int foundStockQuantity = service.findItem(savedId).getStockQuantity();
+		assertEquals(foundStockQuantity, 5);
 	}
 
 }

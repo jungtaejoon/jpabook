@@ -42,15 +42,29 @@ public class ItemService {
 		item.setStockQuantity(amount);
 		updateStock(item);
 	}
-
-	public void incStock(Item item, int amount) {
+	
+	public void decStock(Item item) throws NotEnoughStockException {
+		int amount = item.getStockQuantity();
+		--amount;
+		if(amount < 0) {
+			throw new NotEnoughStockException("need more stock");
+		}
 		item.setStockQuantity(amount);
-		updateStock(item);
 	}
 
-	public void incStock(int amount, Item item) {
+	public void updateStock(Item item, int amount) throws NotEnoughStockException {
+		if(amount < 0) {
+			throw new NotEnoughStockException("need more stock");
+		}
+		item.setStockQuantity(amount);
+	}
+
+	public void calStock(int amount, Item item) throws NotEnoughStockException {
 		amount = amount + item.getStockQuantity();
+		if(amount < 0) {
+			throw new NotEnoughStockException("need more stock");
+		}
 		item.setStockQuantity(amount);
-		updateStock(item);
 	}
+	
 }

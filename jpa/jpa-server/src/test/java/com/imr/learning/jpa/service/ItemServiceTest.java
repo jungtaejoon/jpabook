@@ -93,9 +93,26 @@ public class ItemServiceTest {
 		int foundStockQuantity = service.findItem(savedId).getStockQuantity();
 		assertEquals(foundStockQuantity, 2);
 	}
+	
+	@Test
+	public void shouldDec() throws NotEnoughStockException {
+		
+		// given
+		Item item = new Item();
+		item.setStockQuantity(2);
+		service.saveItem(item);
+		Long savedId = item.getId();
+		
+		// when
+		service.decStock(item);
+		
+		// then
+		int foundStockQuantity = service.findItem(savedId).getStockQuantity();
+		assertEquals(foundStockQuantity, 1);
+	}
 
 	@Test
-	public void shouldIncAmount() {
+	public void shouldUpdateStock() throws NotEnoughStockException {
 
 		// given
 		Item item = new Item();
@@ -104,7 +121,7 @@ public class ItemServiceTest {
 		Long savedId = item.getId();
 
 		// when
-		service.incStock(item, 4);
+		service.updateStock(item, 4);
 
 		// then
 		int foundStockQuantity = service.findItem(savedId).getStockQuantity();
@@ -112,7 +129,7 @@ public class ItemServiceTest {
 	}
 
 	@Test
-	public void shouldAmountInc() {
+	public void shouldCalculateStock() throws NotEnoughStockException {
 
 		// given
 		Item item = new Item();
@@ -121,7 +138,7 @@ public class ItemServiceTest {
 		Long savedId = item.getId();
 
 		// when
-		service.incStock(4, item);
+		service.calStock(4, item);
 
 		// then
 		int foundStockQuantity = service.findItem(savedId).getStockQuantity();

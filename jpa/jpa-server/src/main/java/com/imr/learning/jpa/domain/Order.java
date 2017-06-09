@@ -1,5 +1,6 @@
 package com.imr.learning.jpa.domain;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,6 +45,19 @@ public class Order {
 	
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
+
+	public Order() {
+		super();
+	}
+
+	public Order(Member member, Delivery delivery, List<OrderItem> orderItems) {
+		super();
+		this.setMember(member);
+		this.setDelivery(delivery);
+		this.orderItems = orderItems;
+		this.orderDate = new Timestamp(System.currentTimeMillis());
+		this.status = OrderStatus.ORDER;
+	}
 
 	public Long getId() {
 		return id;

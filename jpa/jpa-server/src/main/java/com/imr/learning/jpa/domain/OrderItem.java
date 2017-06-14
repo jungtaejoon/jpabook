@@ -37,11 +37,11 @@ public class OrderItem {
 		this.item = item;
 	}
 
-	public OrderItem(Order order, Item item, Integer orderPrice, Integer count) {
+	public OrderItem(Order order, Item item, Integer count) {
 		super();
 		this.order = order;
 		this.item = item;
-		this.orderPrice = orderPrice;
+		this.orderPrice = item.getPrice() * count;
 		this.count = count;
 	}
 
@@ -86,7 +86,10 @@ public class OrderItem {
 	}
 
 	public void setCount(Integer count) {
+		this.setOrderPrice(this.item.getPrice() * count);
 		this.count = count;
+		System.out.println(this);
+
 	}
 
 	@Override

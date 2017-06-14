@@ -120,21 +120,24 @@ public class OrderServiceTest {
 		Member member = new Member("철수");
 		Delivery delivery = new Delivery();
 		Item item = new Item("상품1");
+		item.setPrice(2000);
 		OrderItem orderItem = new OrderItem(item);
-		orderItem.setOrderPrice(2000);
+		orderItem.setCount(3);
 		Item item2 = new Item("상품2");
+		item2.setPrice(5000);
 		OrderItem orderItem2 = new OrderItem(item2);
-		orderItem2.setOrderPrice(5000);
+		orderItem2.setCount(4);
 		List<OrderItem> orderItems = new ArrayList<>();
 		orderItems.add(orderItem);
 		orderItems.add(orderItem2);
 		Order savedOrder = service.createOrder(member, delivery, orderItems);
+		System.out.println(savedOrder.getId());
 		
 		// when
 		int total = service.getTotalPrice(savedOrder.getId());
 		
 		// then
-		assertEquals(total, 7000);
+		assertEquals(total, 26000);
 		
 	}
 

@@ -3,14 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <title>JPA Learning</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/css/bootstrap-responsive.min.css"
+	type="text/css">
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 </head>
 <body>
 	<h1>HELLO SHOP</h1>
 	<h3>회원 기능</h3>
-	<button>회원 가입</button><button>회원 목록</button>
+	<button id="join-member">회원 가입</button>
+	<button>회원 목록</button>
 	<h3>상품 기능</h3>
-	<button>상품 등록</button><button>상품 목록</button>
+	<button>상품 등록</button>
+	<button>상품 목록</button>
 	<h3>주문 기능</h3>
-	<button>상품 주문</button><button>주문 내역</button>
+	<button>상품 주문</button>
+	<button>주문 내역</button>
+	<script type="text/javascript">
+		$('#join-member').click(function() {
+			location.href="joining-page";
+		})
+	</script>
 </body>
 </html>

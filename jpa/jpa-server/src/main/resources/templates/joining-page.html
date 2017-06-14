@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Joining Page</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/css/bootstrap-responsive.min.css"
+	type="text/css">
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>이름</td>
+			<td>주소</td>
+		</tr>
+		<tr>
+			<td><input type="text" id="member-name"></td>
+			<td><input type="text" id="member-address"></td>
+		</tr>
+		<tr>
+			<td><button id="join-btn">가입</button></td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		$('#join-btn').click(function() {
+			var obj = new Object();
+			obj.name = $('#member-name').val();
+			obj.address = $('#member-address').val();
+			var str = JSON.stringify(obj);
+			var url = 'http://localhost:8181/api/members';
+			console.log(str);
+			var posting = $.post(url, str, function(data) {
+				console.log(data);
+			});
+			
+			
+		})
+	</script>
+</body>
+</html>
